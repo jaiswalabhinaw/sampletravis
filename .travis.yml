@@ -3,10 +3,10 @@ services:
   - docker
 
 before install:
-  - docker build -t jaiswalabhinaw/docker-react -f Dockerfile.dev .
+  - docker build -t jaiswalabhinaw/sampletravis -f Dockerfile.dev .
   
 script:
-  - docker run -e CI=false jaiswalabhinaw/docker-react npm run test 
+  - docker run -e CI=false jaiswalabhinaw/sampletravis npm run test 
 
 deploy:
   provider: elasticbeanstalk
@@ -14,7 +14,7 @@ deploy:
   app: "sampletravis"
   env: "Sampletravis-env"
   bucket_name: "elasticbeanstalk-us-east-1-947087032817" 
-  bucket_path: "travis-react"
+  bucket_path: "sampletravis"
   on:
     branch: master
   access_key_id: $AWS_ACCESS_KEY
